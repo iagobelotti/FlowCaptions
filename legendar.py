@@ -1,5 +1,5 @@
 """
-FlowCaption: cola um link (YouTube, X/Twitter, Instagram) e recebe o video legendado em portugues.
+FlowCaptions: cola um link (YouTube, X/Twitter, Instagram) e recebe o video legendado em portugues.
 
 Uso:
     python legendar.py                 -> abre uma janelinha para colar o link
@@ -123,9 +123,9 @@ class Posse:
 VEZ_DOWNLOAD = VezEmFila()   # um download por vez
 VEZ_PROC = VezEmFila()       # uma transcricao/codificacao por vez (placa de video)
 
-NOME_APP = "FlowCaption"
+NOME_APP = "FlowCaptions"
 VERSAO = "1.0.0"                 # suba este numero a cada versao publicada (tag do GitHub: v1.0.1, v1.1.0...)
-REPOSITORIO = "iagobelotti/flowcaption"                 # "usuario/repositorio" no GitHub; vazio = sem verificacao de atualizacao
+REPOSITORIO = "iagobelotti/FlowCaptions"                 # "usuario/repositorio" no GitHub; vazio = sem verificacao de atualizacao
 PASTA_APP = Path(__file__).resolve().parent
 if (PASTA_APP / "ffmpeg").is_dir():   # ffmpeg portatil, se houver
     os.environ["PATH"] = str(PASTA_APP / "ffmpeg") + os.pathsep + os.environ.get("PATH", "")
@@ -2712,7 +2712,7 @@ APP_ID = "FlowCaptions.App.1"
 
 def _criar_atalho(caminho, alvo, args, pasta, icone):
     """Cria um atalho que carrega o mesmo ID da janela: assim, ao fixar na barra de tarefas,
-    o Windows usa este atalho (com o icone do FlowCaption) e nao o pythonw/.bat."""
+    o Windows usa este atalho (com o icone do FlowCaptions) e nao o pythonw/.bat."""
     import pythoncom
     from win32com.propsys import propsys, pscon
     from win32com.shell import shell
@@ -2729,7 +2729,7 @@ def _criar_atalho(caminho, alvo, args, pasta, icone):
 
 
 def criar_atalho_desktop():
-    """Cria/atualiza os atalhos FlowCaption (Area de Trabalho e Menu Iniciar) com o icone atual."""
+    """Cria/atualiza os atalhos FlowCaptions (Area de Trabalho e Menu Iniciar) com o icone atual."""
     if sys.platform != "win32":
         return
     try:
@@ -2831,7 +2831,7 @@ def apagar_arquivos(arquivos, base):
         a = Path(a).resolve()
         nosso = a.name.startswith("FC_") or a.suffix.lower() == ".srt" or "_legendado" in a.stem
         if a.parent != base or not nosso:
-            raise RuntimeError(f"{a.name}: fora da pasta de destino ou nao e do FlowCaption; nao apaguei")
+            raise RuntimeError(f"{a.name}: fora da pasta de destino ou nao e do FlowCaptions; nao apaguei")
     for a in arquivos:
         Path(a).unlink(missing_ok=True)
 
@@ -2846,7 +2846,7 @@ def apagar_video(pasta, base):
         raise RuntimeError("pasta fora da pasta de destino; nao apaguei por seguranca")
     conhecidos = {"original.mp4", "legendado.mp4", "legenda_pt.srt", "legenda_pt.ass"}
     if not any((pasta / n).exists() for n in conhecidos):
-        raise RuntimeError("a pasta nao parece ser de um video do FlowCaption; nao apaguei")
+        raise RuntimeError("a pasta nao parece ser de um video do FlowCaptions; nao apaguei")
     shutil.rmtree(pasta)
 
 
@@ -2873,7 +2873,7 @@ def janela():
     from tkinter import font as tkfont
 
     if sys.platform == "win32":
-        try:   # barra de tarefas com o icone do FlowCaption, nao o do Python
+        try:   # barra de tarefas com o icone do FlowCaptions, nao o do Python
             import ctypes
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_ID)
         except Exception:  # noqa: BLE001
