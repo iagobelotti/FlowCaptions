@@ -1,0 +1,19 @@
+# Dados pessoais e arquivos gerados: nunca vão para o GitHub
+env
+env.txt
+.env
+.env.*
+*cookies*.txt
+yt-cookies*
+config.json
+flowcaptions.log
+cache/
+relatorio_pacote.txt
+legendar.py.bak
+legendar.py.novo
+# Pesados: vão só na Release
+python/
+ffmpeg/
+*.zip
+*.psd
+__pycache__/
