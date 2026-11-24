@@ -17,3 +17,9 @@ ffmpeg/
 *.zip
 *.psd
 __pycache__/
+
+# Scripts so do dono
+PUBLICAR.bat
+CRIAR_PACOTE.bat
+criar_pacote.py
+INSTALAR_GIT.bat
